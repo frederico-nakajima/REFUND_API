@@ -3,7 +3,8 @@ import { prisma } from "@/database/prisma"
 import { z } from "zod"
 import { AppError } from "@/utils/AppError"
 
-const CategoriesEnum = z.enum(["food", 
+const CategoriesEnum = z.enum([
+    "food", 
     "others", 
     "services", 
     "transport",
@@ -31,8 +32,8 @@ class RefundsController {
         const refund = await prisma.refunds.create({
             data: {
                 name,
-                category,
                 amount, 
+                category,               
                 filename,
                 userId: request.user.id
             },
@@ -46,7 +47,7 @@ class RefundsController {
         const querySchema = z.object({
             name: z.string().optional().default(" "),
             page: z.coerce.number().optional().default(1),
-            perPage: z.coerce.number().optional().default(10),
+            perPage: z.coerce.number().optional().default(2),
         })
 
         const { name, page, perPage } = querySchema.parse(request.query)

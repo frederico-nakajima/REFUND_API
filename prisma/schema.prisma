@@ -20,7 +20,7 @@ enum Category {
   services
   transport
   accommodation
-
+  
 }
 
 model User {

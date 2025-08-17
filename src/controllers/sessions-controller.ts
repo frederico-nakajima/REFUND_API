@@ -38,8 +38,8 @@ class SessionsController{
 
 
 
-
-        response.json({ token, userWithoutPassword })
+        
+        response.json({ token, user: userWithoutPassword })
     }
 }
 
